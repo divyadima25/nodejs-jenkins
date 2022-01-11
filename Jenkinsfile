@@ -15,8 +15,8 @@ pipeline {
     
     stage("Deploy") {
       steps {
-        sh "sudo cp -R build /var/www/html/build"
-        sh "sudo systemctl restart nginx"
+        sh "scp -r build root@172.31.35.67:/usr/share/nginx/html/"
+        sh 'ssh root@172.31.35.67 "systemctl restart nginx"'
         
       }
     }
